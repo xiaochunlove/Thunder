@@ -14,15 +14,27 @@ import pql.model.IPlane;
 import pql.model.Point;
 import pql.util.Config;
 
+/**
+ * 爆炸处理类实现Action借口
+ * 
+ * @author chunlan
+ * @Time 2015-1-18 10:30:00
+ */
+ 
 public class BoomAction implements Action {
 	private PlaneAction planeAction = null;
 	private BulletAction bulletAction = null;
 	private ScoreAction scoreAction = null;
-	private int bulletWidth = 0;
-	private List<Point> booms = new ArrayList<Point>();
-	private Image boomimg_1 = new ImageIcon(Config.BOOM_1).getImage();
-	private Image boomimg_2 = new ImageIcon(Config.BOOM_2).getImage();
+	private int bulletWidth = 0;							// 子弹宽度
+	private List<Point> booms = new ArrayList<Point>();				// 爆炸集合
+	private Image boomimg_1 = new ImageIcon(Config.BOOM_1).getImage();		// 爆炸图片1
+	private Image boomimg_2 = new ImageIcon(Config.BOOM_2).getImage();		// 爆炸图片2
 	
+	/**
+	 * 爆炸处理类的构造函数，初始化飞机处理类，子弹处理类和分数处理类以及子弹宽度
+	 *  
+	 * @param m 面板
+	 */
 	public BoomAction(MainPanel m) {
 		this.planeAction = (PlaneAction)m.actions.get("PlaneAction");
 		this.bulletAction = (BulletAction)m.actions.get("BulletAction");
@@ -30,9 +42,19 @@ public class BoomAction implements Action {
 		this.bulletWidth = bulletAction.heroBullet.getImg().getWidth(null);
 	}
 	
+	/**
+	 * 该方法用于判断booNum是否大于配置类中的参数，英雄机的子弹是否打中敌机，英雄机和敌机是否相撞，以及敌机的子弹是否打中英雄机
+	 * 
+	 * @return void
+	 * @exception  
+	 * @author chunlan
+	 * @Time 2015-1-18 10:30:00
+	 */
+	 
 	@Override
 	public void doAction() {
 		
+		// 判断booNum是否大于配置类中的参数
 		for(int i = 0; i<booms.size(); i++) {
 			Point p = booms.get(i);
 			if(p.boomNum <= Config.BOOMNUM) {
@@ -43,6 +65,7 @@ public class BoomAction implements Action {
 			}
 		}
 		
+		// 判断英雄机的子弹是否打中敌机
 		for(int i=0; i<planeAction.enermies.size(); i++) {
 			IPlane enermy = planeAction.enermies.get(i);
 			for(int j=0; j<bulletAction.heroBullets.size(); j++) {
@@ -66,6 +89,7 @@ public class BoomAction implements Action {
 			}
 		}
 		
+		// 判断英雄机和敌机是否相撞
 		HeroPlane heroPlane = planeAction.hero;
 		for(int i=0; i<planeAction.enermies.size(); i++) {
 			IPlane enermy = planeAction.enermies.get(i);
@@ -84,7 +108,7 @@ public class BoomAction implements Action {
 			}
 		}
 		
-		
+		// 判断敌机的子弹是否打中英雄机
 		for(int i=0; i<bulletAction.enermyBullets.size(); i++) {
 			Point p = bulletAction.enermyBullets.get(i);
 			int length = p.y - (heroPlane.getY() + heroPlane.getImg().getHeight(null));
@@ -101,9 +125,20 @@ public class BoomAction implements Action {
 		}
 	}
 
+	/**
+	 * 该方法用于绘画爆炸图片
+	 * 
+	 * @param g 画笔
+	 * @return void
+	 * @exception  
+	 * @author chunlan
+	 * @Time 2015-1-18 10:30:00
+	 */
+	 
 	@Override
 	public void drawAction(Graphics g) {
 		
+		// 根据条件画出爆炸图片 
 		for(int i = 0; i<booms.size(); i++) {
 			Point p = booms.get(i);
 			if(p.boomNum <= Config.BOOMNUM / 2 ) {
@@ -115,6 +150,15 @@ public class BoomAction implements Action {
 		}
 	}
 	
+	/**
+	 * 该方法用于计算两点之间的距离
+	 * 
+	 * @param x1, y1, x2, y2 
+	 * @return double
+	 * @exception  
+	 * @author chunlan
+	 * @Time 2015-1-18 10:30:00
+	 */
 	public double getDis(int x1, int y1, int x2, int y2) {
 		double midd = (x1-x2) * (x1-x2) + (y1-y2) * (y1-y2);
 		return Math.sqrt(midd);
