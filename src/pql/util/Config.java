@@ -38,5 +38,5 @@ public class Config {
 	
 	
 	public static String BOOM_1         = "images/db1.gif";
-	public static String BOOM_2         = "images/db2.gif";
+	public static String BOOM_2         = "images/db2.gif";	
 }

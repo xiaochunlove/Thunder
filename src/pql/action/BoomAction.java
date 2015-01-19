@@ -13,6 +13,7 @@ import pql.model.HeroPlane;
 import pql.model.IPlane;
 import pql.model.Point;
 import pql.util.Config;
+import pql.util.util;
 
 public class BoomAction implements Action {
 	private PlaneAction planeAction = null;
@@ -73,7 +74,7 @@ public class BoomAction implements Action {
 			int enermyX = enermy.getX() + enermy.getImg().getWidth(null) / 2;
 			int enermyY = enermy.getY() + enermy.getImg().getHeight(null) / 2;
 			
-			if(getDis(heroPlane.x, heroPlane.y, enermyX, enermyY) <dis ) {
+			if(util.getDis(heroPlane.x, heroPlane.y, enermyX, enermyY) <dis ) {
 				heroPlane.hp--;
 				Point boom = new Point();
 				boom.x = enermy.getX();
@@ -113,10 +114,5 @@ public class BoomAction implements Action {
 				g.drawImage(boomimg_2, p.x, p.y, Config.BOOMWIDTH, Config.BOOMHEIGHT, null);
 			}
 		}
-	}
-	
-	public double getDis(int x1, int y1, int x2, int y2) {
-		double midd = (x1-x2) * (x1-x2) + (y1-y2) * (y1-y2);
-		return Math.sqrt(midd);
 	}
 }
