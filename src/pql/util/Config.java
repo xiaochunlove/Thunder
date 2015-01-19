@@ -22,6 +22,7 @@ public class Config {
 	public static int    BOOMNUM        = 12;
 	public static int    BOOMHEIGHT     = 40;
 	public static int    BOOMWIDTH      = 40;
+	public static int    BUFFTIME       = 400;
 	
 	
 	public static String BACKGROUND     = "images/bk.jpg";
@@ -33,6 +34,7 @@ public class Config {
 	public static String ENERMYPLANE_5  = "images/e6.png";
 	public static String HEROBULLET     = "images/dijizidan.gif";
 	public static String ENERMYBULLET   = "images/bullet3456.png";
+	public static String BUFF           = "images/bonus.png";	
 	
 	
 	public static String BOOM_1         = "images/db1.gif";
