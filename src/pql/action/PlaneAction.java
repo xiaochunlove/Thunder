@@ -9,7 +9,6 @@ import java.util.List;
 import pql.MainPanel;
 import pql.model.HeroPlane;
 import pql.model.IPlane;
-import pql.model.StraEnermyPlane;
 import pql.thread.RandomEnermy;
 import pql.util.Config;
 
