@@ -14,7 +14,6 @@ public interface Action {
 	/**
 	 * 该方法用于处理所有要完成的一系列的动作
 	 * 
-	 * @param color按钮的颜色
 	 * @return void
 	 * @exception  
 	 * @author chunlan
