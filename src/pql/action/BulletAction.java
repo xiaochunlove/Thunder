@@ -9,6 +9,8 @@ import java.util.List;
 import pql.MainPanel;
 import pql.model.EnermyBullet;
 import pql.model.HeroBullet_1;
+import pql.model.HeroBullet_2;
+import pql.model.HeroBullet_3;
 import pql.model.IBullet;
 import pql.model.Point;
 
@@ -45,5 +47,17 @@ public class BulletAction implements Action{
 	public void drawAction(Graphics g) {
 		heroBullet.draw(g);
 		enermyBullet.draw(g);
+	}
+	
+	public void setHeroBullet(int type) {
+		if(type == 1) {
+			this.heroBullet = new HeroBullet_1(this);
+		}
+		if(type == 2) {
+			this.heroBullet = new HeroBullet_2(this);
+		}
+		if(type == 3) {
+			this.heroBullet = new HeroBullet_3(this);
+		}
 	}
 }
