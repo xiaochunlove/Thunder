@@ -28,8 +28,8 @@ public class MainPanel extends JPanel{
 		actions.put("BackgroundAction", new BackgroundAction());
 		actions.put("ScoreAction", new ScoreAction());
 		actions.put("PlaneAction", new PlaneAction(this));
-		actions.put("BuffAction", new BuffAction(this));
 		actions.put("BulletAction", new BulletAction(this));
+		actions.put("BuffAction", new BuffAction(this));		
 		actions.put("BoomAction", new BoomAction(this));
 		actions.put("HPAction", new HPAction(this));
 		
