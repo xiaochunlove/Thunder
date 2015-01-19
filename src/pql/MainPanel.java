@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import pql.action.Action;
 import pql.action.BackgroundAction;
 import pql.action.BoomAction;
+import pql.action.BuffAction;
 import pql.action.BulletAction;
 import pql.action.HPAction;
 import pql.action.PlaneAction;
@@ -25,6 +26,7 @@ public class MainPanel extends JPanel{
 	
 	public MainPanel() {
 		actions.put("BackgroundAction", new BackgroundAction());
+		actions.put("BuffAction", new BuffAction());
 		actions.put("ScoreAction", new ScoreAction());
 		actions.put("PlaneAction", new PlaneAction(this));
 		actions.put("BulletAction", new BulletAction(this));
