@@ -13,6 +13,7 @@ import pql.util.util;
 
 public class BuffAction implements Action {
 	private PlaneAction planeAction = null;
+	private BulletAction bulletAction = null;
 	private int bufftime = 0;
 	private int x = 0;
 	private int y = 0;
@@ -24,6 +25,7 @@ public class BuffAction implements Action {
 	
 	public BuffAction(MainPanel m) {
 		this.planeAction = (PlaneAction) m.actions.get("PlaneAction");
+		this.bulletAction = (BulletAction) m.actions.get("BulletAction");
 	}
 	
 	@Override
@@ -35,6 +37,7 @@ public class BuffAction implements Action {
 		int Y = y + height / 2;
 		
 		if(util.getDis(heroPlane.x, heroPlane.y, X, Y) < dis) {
+			bulletAction.setHeroBullet(type);
 			random();
 			return;
 		}
